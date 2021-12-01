@@ -1,0 +1,2 @@
+language = "cpp"
+run = "c++ main.cpp"
