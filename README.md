@@ -1,2 +1,5 @@
-SHS 2025 VEX BASE
+SHS Freshman VEX TEAM/VEX-CODE
+
 #forked from ``https://github.com/Unionjackjz1/HW-AMOGO-VEXCODE``
+
+Last edited: 1/2/2022 1:40 PM
