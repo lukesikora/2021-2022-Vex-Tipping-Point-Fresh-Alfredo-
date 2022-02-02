@@ -1,2 +1,2 @@
 language = "cpp"
-run = "c++ main.cpp"
+run = "c++ Driver-Controlled"
