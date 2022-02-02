@@ -7,7 +7,7 @@ def when_started1():
     drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
     drivetrain.drive_for(FORWARD, 465, MM, wait=True)
     drivetrain.stop()
-    # PICK UP BOX FUNCTION
+    # MOBILE BASE PICK
     drivetrain.drive_for(FORWARD, 320, MM, wait=True)
     drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
     motor_15.spin(FORWARD)
@@ -15,7 +15,7 @@ def when_started1():
     motor_15.stop()
     drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
     drivetrain.drive_for(FORWARD, 546, MM, wait=True)
-    # DROP BOX FUNCTION
+    # MOBILE BASE DROP
 
 # define variable for remote controller enable/disable
 remote_control_code_enabled = True
