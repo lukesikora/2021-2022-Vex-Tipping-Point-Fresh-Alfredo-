@@ -11,14 +11,14 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// lb                   motor         13              
-// lf                   motor         11              
+// lb                   motor         11            
+// lf                   motor         15              
 // rb                   motor         14              
-// rf                   motor         21              
+// rf                   motor         16             
 // conveyor             motor         12              
 // intake               motor         17              
-// mogo                 motor         18              
-// tilter               motor         15                  
+// mogo                 motor         19       
+// tilter               motor         13               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 
