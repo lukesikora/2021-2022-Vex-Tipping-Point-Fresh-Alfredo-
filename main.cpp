@@ -1,98 +1,114 @@
-myVariable = 0
+competition Competition;
 
-def onauton_autonomous_0():
-    global myVariable
-    motor_15.set_velocity(90, PERCENT)
-    motor_15.set_velocity(75, PERCENT)
-    motor_12.set_velocity(20, PERCENT)
-    motor_18.spin(REVERSE)
-    wait(1, SECONDS)
-    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
-    drivetrain.stop()
-    motor_18.spin(FORWARD)
-    motor_15.spin(REVERSE)
-    wait(4, SECONDS)
-    motor_15.stop()
-    drivetrain.drive_for(REVERSE, 200, MM, wait=True)
-    motor_18.spin_for(REVERSE, 270, DEGREES, wait=True)
-    motor_18.stop()
+float myVariable;
 
-def ondriver_drivercontrol_0():
-    global myVariable
-    drivetrain.set_turn_velocity(50, PERCENT)
-    motor_15.set_velocity(100, PERCENT)
-    motor_18.set_velocity(50, PERCENT)
-    motor_12.set_velocity(20, PERCENT)
-    drivetrain.set_drive_velocity(75, PERCENT)
+// "when autonomous" hat block
+int onauton_autonomous_0() {
+  Motor15.setVelocity(90.0, percent);
+  Motor15.setVelocity(75.0, percent);
+  Motor12.setVelocity(20.0, percent);
+  Motor18.spin(reverse);
+  wait(1.0, seconds);
+  Drivetrain.driveFor(forward, 200.0, mm, true);
+  Drivetrain.stop();
+  Motor18.spin(forward);
+  Motor15.spin(reverse);
+  wait(4.0, seconds);
+  Motor15.stop();
+  Drivetrain.driveFor(reverse, 200.0, mm, true);
+  Motor18.spinFor(reverse, 270.0, degrees, true);
+  Motor18.stop();
+  return 0;
+}
 
-def onevent_controller_1buttonX_pressed_0():
-    global myVariable
-    motor_15.set_velocity(100, PERCENT)
-    motor_15.spin(FORWARD)
-    wait(1, SECONDS)
-    motor_15.stop()
-    motor_15.set_velocity(70, PERCENT)
+// "when driver control" hat block
+int ondriver_drivercontrol_0() {
+  Drivetrain.setTurnVelocity(50.0, percent);
+  Motor15.setVelocity(100.0, percent);
+  Motor18.setVelocity(50.0, percent);
+  Motor12.setVelocity(20.0, percent);
+  Drivetrain.setDriveVelocity(75.0, percent);
+  return 0;
+}
 
-def onevent_controller_1buttonR1_released_0():
-    global myVariable
-    motor_18.stop()
+// "when Controller1 ButtonX pressed" hat block
+void onevent_Controller1ButtonX_pressed_0() {
+  Motor15.setVelocity(100.0, percent);
+  Motor15.spin(forward);
+  wait(1.0, seconds);
+  Motor15.stop();
+  Motor15.setVelocity(70.0, percent);
+}
 
-def onevent_controller_1buttonR1_pressed_0():
-    global myVariable
-    motor_18.spin(REVERSE)
+// "when Controller1 ButtonR1 released" hat block
+void onevent_Controller1ButtonR1_released_0() {
+  Motor18.stop();
+}
 
-def onevent_controller_1buttonR2_pressed_0():
-    global myVariable
-    motor_18.spin(FORWARD)
+// "when Controller1 ButtonR1 pressed" hat block
+void onevent_Controller1ButtonR1_pressed_0() {
+  Motor18.spin(reverse);
+}
 
-def onevent_controller_1buttonL2_pressed_0():
-    global myVariable
-    motor_15.spin(REVERSE)
+// "when Controller1 ButtonR2 pressed" hat block
+void onevent_Controller1ButtonR2_pressed_0() {
+  Motor18.spin(forward);
+}
 
-def onevent_controller_1buttonL1_pressed_0():
-    global myVariable
-    motor_15.stop()
+// "when Controller1 ButtonL2 pressed" hat block
+void onevent_Controller1ButtonL2_pressed_0() {
+  Motor15.spin(reverse);
+}
 
-def onevent_controller_1buttonA_pressed_0():
-    global myVariable
-    motor_12.spin(REVERSE)
+// "when Controller1 ButtonL1 pressed" hat block
+void onevent_Controller1ButtonL1_pressed_0() {
+  Motor15.stop();
+}
 
-def onevent_controller_1buttonB_pressed_0():
-    global myVariable
-    motor_12.spin(FORWARD)
+// "when Controller1 ButtonA pressed" hat block
+void onevent_Controller1ButtonA_pressed_0() {
+  Motor12.spin(reverse);
+}
 
-# create a function for handling the starting and stopping of all autonomous tasks
-def vexcode_auton_function():
-    # Start the autonomous control tasks
-    auton_task_0 = Thread( onauton_autonomous_0 )
-    # wait for the driver control period to end
-    while( competition.is_autonomous() and competition.is_enabled() ):
-        # wait 10 milliseconds before checking again
-        wait( 10, MSEC )
-    # Stop the autonomous control tasks
-    auton_task_0.stop()
+// "when Controller1 ButtonB pressed" hat block
+void onevent_Controller1ButtonB_pressed_0() {
+  Motor12.spin(forward);
+}
 
-def vexcode_driver_function():
-    # Start the driver control tasks
-    driver_control_task_0 = Thread( ondriver_drivercontrol_0 )
-    # wait for the driver control period to end
-    while( competition.is_driver_control() and competition.is_enabled() ):
-        # wait 10 milliseconds before checking again
-        wait( 10, MSEC )
-    # Stop the driver control tasks
-    driver_control_task_0.stop()
+void VEXcode_driver_task() {
+  // Start the driver control tasks....
+  vex::task drive0(ondriver_drivercontrol_0);
 
-# register the competition functions
-competition = Competition( vexcode_driver_function, vexcode_auton_function )
+  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);
+  while(Competition.isDriverControl() && Competition.isEnabled()) {this_thread::sleep_for(10);}
+  drive0.stop();
+  return;
+}
 
-# system event handlers
-controller_1.buttonX.pressed(onevent_controller_1buttonX_pressed_0)
-controller_1.buttonR1.released(onevent_controller_1buttonR1_released_0)
-controller_1.buttonR1.pressed(onevent_controller_1buttonR1_pressed_0)
-controller_1.buttonR2.pressed(onevent_controller_1buttonR2_pressed_0)
-controller_1.buttonL2.pressed(onevent_controller_1buttonL2_pressed_0)
-controller_1.buttonL1.pressed(onevent_controller_1buttonL1_pressed_0)
-controller_1.buttonA.pressed(onevent_controller_1buttonA_pressed_0)
-controller_1.buttonB.pressed(onevent_controller_1buttonB_pressed_0)
-# add 15ms delay to make sure events are registered correctly.
-wait(15, MSEC)
+void VEXcode_auton_task() {
+  // Start the auton control tasks....
+  vex::task auto0(onauton_autonomous_0);
+  while(Competition.isAutonomous() && Competition.isEnabled()) {this_thread::sleep_for(10);}
+  auto0.stop();
+  return;
+}
+
+
+
+int main() {
+  vex::competition::bStopTasksBetweenModes = false;
+  Competition.autonomous(VEXcode_auton_task);
+  Competition.drivercontrol(VEXcode_driver_task);
+
+  // register event handlers
+  Controller1.ButtonX.pressed(onevent_Controller1ButtonX_pressed_0);
+  Controller1.ButtonR1.released(onevent_Controller1ButtonR1_released_0);
+  Controller1.ButtonR1.pressed(onevent_Controller1ButtonR1_pressed_0);
+  Controller1.ButtonR2.pressed(onevent_Controller1ButtonR2_pressed_0);
+  Controller1.ButtonL2.pressed(onevent_Controller1ButtonL2_pressed_0);
+  Controller1.ButtonL1.pressed(onevent_Controller1ButtonL1_pressed_0);
+  Controller1.ButtonA.pressed(onevent_Controller1ButtonA_pressed_0);
+  Controller1.ButtonB.pressed(onevent_Controller1ButtonB_pressed_0);
+
+  wait(15, msec);
+}
