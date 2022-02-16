@@ -22,6 +22,7 @@ using namespace vex;
 competition Competition;
 float myVariable;
 
+//**********************************************************************************************
 // "when Controller1 ButtonX pressed" hat block
 void onevent_Controller1ButtonX_pressed_0() {
   Motor15.setVelocity(100.0, percent);
@@ -65,7 +66,7 @@ void onevent_Controller1ButtonA_pressed_0() {
 void onevent_Controller1ButtonB_pressed_0() {
   Motor12.spin(forward);
 }
-
+//**********************************************************************************************
 //SMILEYFACE
 void drawSmileyAt(int x, int y){
   Brain.Screen.drawCircle(x, y, 40, yellow);
