@@ -5,7 +5,7 @@
 
 |Name            | Type       | Port(s)  |
 |:---------------|:-----------|:---------|
-|`Controller1   `| controller |          |
+|`Controller1   `| controller |   99999  |
 |`topLeft       `| motor      | 10       |
 |`bottomLeft    `| motor      | 9        |
 |`topRight      `| motor      | 2        |
@@ -18,4 +18,4 @@
 |`indexer       `| line       | H        |
 
 
-## LATEST EDIT: (2/14/2022), 7:56 PM
+## LATEST EDIT: (2/16/2022), 4:43 PM
