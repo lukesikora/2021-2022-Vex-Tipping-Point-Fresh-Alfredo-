@@ -101,7 +101,7 @@ void VEXcode_auton_task() {
 }
 //DRIVER CONTROLLED
 int ondriver_drivercontrol_0() {
-  Drivetrain.setTurnVelocity(50.0, percent);
+  Drivetrain.setTurnVelocity(50.0, percent); // TURN SPEED
   Motor15.setVelocity(100.0, percent);
   Motor18.setVelocity(50.0, percent);
   Motor12.setVelocity(20.0, percent);
