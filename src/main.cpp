@@ -13,8 +13,8 @@
 // Controller1          controller                    
 // Drivetrain           drivetrain    4, 6, 5, 17     
 // Motor18              motor         18              
-// Motor12              motor         12              
 // Motor15              motor         15              
+// Motor14              motor         14              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -30,6 +30,15 @@ void onevent_Controller1ButtonX_pressed_0() {
   wait(1.0, seconds);
   Motor15.stop();
   Motor15.setVelocity(70.0, percent);
+}
+void onevent_Controller1ButtonA_pressed_0() {
+  Motor14.setMaxTorque(100, percent);
+  Motor14.spinFor(forward, 90.0, degrees, true);
+  
+}
+void onevent_Controller1ButtonB_pressed_0() {
+  Motor14.setMaxTorque(100, percent);
+  Motor14.spinFor(reverse, 90.0, degrees, true);
 }
 
 // "when Controller1 ButtonR1 released" hat block
@@ -58,14 +67,7 @@ void onevent_Controller1ButtonL1_pressed_0() {
 }
 
 // "when Controller1 ButtonA pressed" hat block
-void onevent_Controller1ButtonA_pressed_0() {
-  Motor12.spin(reverse);
-}
 
-// "when Controller1 ButtonB pressed" hat block
-void onevent_Controller1ButtonB_pressed_0() {
-  Motor12.spin(forward);
-}
 //**********************************************************************************************
 //SMILEYFACE
 void drawSmileyAt(int x, int y){
@@ -78,7 +80,6 @@ void drawSmileyAt(int x, int y){
 int onauton_autonomous_0() {
   Motor15.setVelocity(90.0, percent);
   Motor15.setVelocity(75.0, percent);
-  Motor12.setVelocity(20.0, percent);
   Motor18.spin(reverse);
   wait(1.0, seconds);
   Drivetrain.driveFor(forward, 200.0, mm, true);
@@ -105,7 +106,6 @@ int ondriver_drivercontrol_0() {
   Drivetrain.setTurnVelocity(50.0, percent); // TURN SPEED
   Motor15.setVelocity(100.0, percent);
   Motor18.setVelocity(50.0, percent);
-  Motor12.setVelocity(20.0, percent);
   Drivetrain.setDriveVelocity(75.0, percent);
   return 0;
 }
@@ -124,7 +124,7 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vex::competition::bStopTasksBetweenModes = false;
   //Print words
-  Controller1.Screen.print("Luke is the GOAT"); 
+  Controller1.Screen.print("Pizzahut"); 
   //draw face
   drawSmileyAt(50, 50);
   drawSmileyAt(400, 50);
