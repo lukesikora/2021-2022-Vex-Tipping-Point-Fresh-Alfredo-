@@ -31,16 +31,29 @@ void onevent_Controller1ButtonX_pressed_0() {
   Motor15.stop();
   Motor15.setVelocity(70.0, percent);
 }
+// "when Controller1 ButtonA pressed" hat block
 void onevent_Controller1ButtonA_pressed_0() {
-  Motor14.setMaxTorque(100, percent);
-  Motor14.spinFor(forward, 90.0, degrees, true);
-  
-}
-void onevent_Controller1ButtonB_pressed_0() {
-  Motor14.setMaxTorque(100, percent);
-  Motor14.spinFor(reverse, 90.0, degrees, true);
+  Motor14.setMaxTorque(100, percent); 
+  Motor14.setVelocity(80, percent);
+  Motor14.spin(forward);
 }
 
+// "when Controller1 ButtonA released" hat block
+void onevent_Controller1ButtonA_released_0() {
+  Motor14.stop();
+}
+
+// "when Controller1 ButtonB pressed" hat block
+void onevent_Controller1ButtonB_pressed_0() { //   UP
+  Motor14.setVelocity(80, percent);
+  Motor14.setMaxTorque(100, percent); 
+  Motor14.spinFor(reverse, 300.0, degrees, true);
+}
+
+// "when Controller1 ButtonB released" hat block
+void onevent_Controller1ButtonB_released_0() {
+  Motor14.stop();
+}
 // "when Controller1 ButtonR1 released" hat block
 void onevent_Controller1ButtonR1_released_0() {
   Motor18.stop();
@@ -143,5 +156,7 @@ int main() {
   Controller1.ButtonL1.pressed(onevent_Controller1ButtonL1_pressed_0);
   Controller1.ButtonA.pressed(onevent_Controller1ButtonA_pressed_0);
   Controller1.ButtonB.pressed(onevent_Controller1ButtonB_pressed_0);
+  Controller1.ButtonA.released(onevent_Controller1ButtonA_released_0);
+  Controller1.ButtonB.released(onevent_Controller1ButtonB_released_0);
 }
 //**********************************************************************************************

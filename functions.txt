@@ -8,7 +8,12 @@ FRONT
 5	6
 
 #########################
+Code
+17	4
+5	6
+
+#########################
 FUNCTIONS OF BUTTONS
 15 is Conveyor belt
 18 is Tower pick-up
-12 is New Pick-up
+14 is New Pick-up
