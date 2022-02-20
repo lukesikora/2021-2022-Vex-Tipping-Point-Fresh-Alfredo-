@@ -14,6 +14,5 @@ Code
 
 #########################
 FUNCTIONS OF BUTTONS
-15 is Conveyor belt
-18 is Tower pick-up
-14 is New Pick-up
+14 - Conveyor belt
+15 - New Pick-up
