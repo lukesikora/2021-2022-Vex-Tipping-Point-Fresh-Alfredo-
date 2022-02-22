@@ -17,3 +17,8 @@ FUNCTIONS OF BUTTONS
 15 is Conveyor belt
 18 is Tower pick-up
 14 is New Pick-up
+Motor12 - First up
+Motor19 - Second up
+
+Motor14 - Pickup
+Motor15 - Convyeror
