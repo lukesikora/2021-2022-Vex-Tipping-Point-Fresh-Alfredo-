@@ -8,6 +8,8 @@ extern drivetrain Drivetrain;
 extern motor Motor18;
 extern motor Motor15;
 extern motor Motor14;
+extern motor Motor19;
+extern motor Motor12;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
