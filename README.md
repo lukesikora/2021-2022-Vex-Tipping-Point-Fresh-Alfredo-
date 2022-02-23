@@ -6,16 +6,12 @@
 |Name            | Type       | Port(s)  |
 |:---------------|:-----------|:---------|
 |`Controller1   `| controller |   99999  |
-|`topLeft       `| motor      | 10       |
-|`bottomLeft    `| motor      | 9        |
-|`topRight      `| motor      | 2        |
-|`bottomRight   `| motor      | 3        |
-|`intakeLeft    `| motor      | 20       |
-|`intakeRight   `| motor      | 13       |
-|`tray          `| motor      | 16       |
-|`intakeLift    `| motor      | 17       |
-|`inert         `| inertial   | 18       |
-|`indexer       `| line       | H        |
-
+|`drivetrain    `| motor      | 6, 17, 4, 5 |
+|`Intake center `| motor      | 14       |
+|`conveyor belt `| motor      | 15       |
+|`Tower pick-up `| motor      | 18       |
+|`(NEW) pick-up `| motor      | 14 (INV) |
+|`Chain 1       `| motor      | 12       |
+|`Chain 2       `| motor      | 19       |
 
 ## LATEST EDIT: (2/21/2022), 11:07 PM
